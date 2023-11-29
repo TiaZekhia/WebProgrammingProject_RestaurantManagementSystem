@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/loginstyles.css">
+    <title>Sign in - Sign up</title>
+</head>
+
+<body>
+    <br>
+    <br>
+    <div class="cont">
+        <div class="form sign-in">
+            <h2>Welcome</h2>
+            <form action="/check" method="GET">
+                <label>
+                    <span>Username</span>
+                    <input type="text" name="username" />
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" name="password" />
+                </label>
+                <input type="submit" value="Sign In" class="submit">
+            </form>
+        </div>
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+
+                    <h3>Don't have an account? Please Sign up!<h3>
+                </div>
+                <div class="img__text m--in">
+
+                    <h3>If you already has an account, just sign in.<h3>
+                </div>
+                <div class="img__btn">
+                    <span class="m--up">Sign Up</span>
+                    <span class="m--in">Sign In</span>
+                </div>
+            </div>
+            <div class="form sign-up">
+                <h2>Create your Account</h2>
+                <form action="/signup" method="POST">
+                    <label>
+                        <span>Username</span>
+                        <input type="text" name="username" id="username" />
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        <input type="email" name="email" id="email" />
+                    </label>
+                    <label>
+                        <span>Password</span>
+                        <input type="password" name="password" id="password" />
+                    </label>
+                    <input type="submit" value="Sign Up" id="signup" class="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.img__btn').addEventListener('click', function () {
+            document.querySelector('.cont').classList.toggle('s--signup');
+        });
+
+        // var btn = document.getElementById('signup');
+
+        // var uname = document.getElementById('username');
+        // var pass = document.getElementById('password');
+        // var email = document.getElementById('email');
+
+        // var BaseUrlPost = "http://localhost:3000/signinup/";
+
+        // btn.addEventListener('click', postInfo);
+
+        // async function postInfo(e) {
+        //     e.preventDefault();
+        //     const res = await fetch(BaseUrlPost, {
+        //         method: 'POST',
+        //         headers: {
+        //             "Content-Type": 'application/json'
+        //         },
+        //         body: JSON.stringify({
+        //             username: uname.value, password: pass.value, email: email.value
+        //         })
+        //     });
+        // }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!-- views/viewMenu.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" type="text/css" href="/css/menustyles.css">
+</head>
+
+<body>
+    <h1>Restaurant Menu</h1>
+
+    <% Object.entries(groupedItems).forEach(([category, items]) => { %>
+        <section>
+            <h2><%= category %></h2>
+            <ul>
+                <% items.forEach(item => { %>
+                    <li>
+                        <strong><%= item.item_name %></strong>
+                        <p><%= item.item_description %></p>
+                        <p>Price: <%= item.item_price %></p>
+                    </li>
+                <% }); %>
+            </ul>
+        </section>
+    <% }); %>
+
+    <!-- Add any additional content or formatting as needed -->
+</body>
+
+</html>

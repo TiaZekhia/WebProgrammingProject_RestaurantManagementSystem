@@ -1,0 +1,66 @@
+/* public/css/menu-view-styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+section {
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* Define background images for each section */
+section:nth-child(1) {
+    background-image: url('../images/salad.jpg'); 
+}
+
+section:nth-child(2) {
+    background-image: url('../images/section2-bg.jpg'); 
+}
+
+section:nth-child(3) {
+    background-image: url('../images/section3-bg.jpg'); 
+}
+
+section:nth-child(4) {
+    background-image: url('../images/section4-bg.jpg'); 
+}
+
+h2 {
+    color: #4285f4;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+strong {
+    color: #333;
+    font-size: 1.2em;
+}
+
+p {
+    color: #666;
+}
+
+/* Add any additional styling specific to this view */
