@@ -16,6 +16,18 @@ const userModel = {
       callback
     );
   },
+  
+ getUserIdByUsername: (username, callback) => {
+    connect.connection.query('SELECT uid FROM users WHERE username = ?', [username], (error, results) => {
+        if (error) {
+            callback(error, null);
+        } else {
+            const id = results.length > 0 ? results[0].uid : null;
+            callback(null, id);
+        }
+    });
+}
 };
+
 
 module.exports = userModel;

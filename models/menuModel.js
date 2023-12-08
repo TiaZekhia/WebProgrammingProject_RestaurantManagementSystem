@@ -18,6 +18,44 @@ const menuModel = {
             );
         });
     },
+    getAllItemNames: async () => {
+        try {
+            const results = await menuModel.getMenuItems();
+            return menuModel.extractItemNames(results);
+        } catch (error) {
+            throw error;
+        }
+    },
+
+    extractItemNames: (results) => {
+        // Check if results is an array before using map
+        if (Array.isArray(results)) {
+            return results.map(result => result.item_name);
+        } else {
+            console.log('Results is not an array:', results);
+            return [];
+        }
+    },
+  
+    
+      
+    getItemIdByItemName: (item_name, callback) => {
+        connect.connection.query(
+            'SELECT item_id FROM menu WHERE item_name = ?',
+            [item_name],
+            (error, results) => {
+                if (error) {
+                    callback(error, null);
+                } else {
+                    const itemId = results.length > 0 ? results[0].item_id : null;
+                    callback(null, itemId);
+                }
+            }
+        );
+    }
+    
+  
+  
 };
 
 module.exports = menuModel;

@@ -1,5 +1,3 @@
-<!-- views/viewMenu.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,8 +12,8 @@
     <h1>Restaurant Menu</h1>
 
     <% Object.entries(groupedItems).forEach(([category, items]) => { %>
-        <section>
-            <h2><%= category %></h2>
+        <section class="<%= category.toLowerCase().replace(' ', '') %>">
+            <div class="image"><h2><%= category %></h2></div>
             <ul>
                 <% items.forEach(item => { %>
                     <li>

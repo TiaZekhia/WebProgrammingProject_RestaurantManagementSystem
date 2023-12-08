@@ -9,7 +9,7 @@ app.set('view engine','ejs');
 
 const authController = require('./controllers/authController');
 const menuController = require('./controllers/menuController');
-
+const reviewController = require('./controllers/reviewController');
 
 const viewsPath = path.join(__dirname, 'views');
 app.use(express.static(path.join(__dirname, 'public')));
@@ -32,6 +32,13 @@ app.get('/home', (req, res) => {
 
     res.render('home',{username});
   });
+
+app.get('/makeReview', reviewController.showReviewForm);
+
+app.post('/makeReview', reviewController.makeReview);
+
+//app.get('/userReviews', reviewController.userReviews);
+
 
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');

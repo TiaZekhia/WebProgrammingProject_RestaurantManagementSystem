@@ -1,66 +1,84 @@
-/* public/css/menu-view-styles.css */
-
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f0f0f0;
 }
 
 h1 {
-    text-align: center;
     color: #333;
-    margin-top: 20px;
+    background-color: #fff;
+    padding: 20px;
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
 }
 
 section {
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-}
-
-/* Define background images for each section */
-section:nth-child(1) {
-    background-image: url('../images/salad.jpg'); 
-}
-
-section:nth-child(2) {
-    background-image: url('../images/section2-bg.jpg'); 
-}
-
-section:nth-child(3) {
-    background-image: url('../images/section3-bg.jpg'); 
-}
-
-section:nth-child(4) {
-    background-image: url('../images/section4-bg.jpg'); 
+    margin: 20px;
 }
 
 h2 {
-    color: #4285f4;
+    color: #4CAF50;
     margin-bottom: 10px;
+    position: relative;
+    left: 10%;
+    font-size: 50px;
 }
 
 ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
 }
 
 li {
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-strong {
-    color: #333;
-    font-size: 1.2em;
+li strong {
+    display: block;
+    color: #4a4a4a;
+    margin-bottom: 10px;
 }
 
-p {
-    color: #666;
+li p {
+    margin: 0;
 }
 
-/* Add any additional styling specific to this view */
+.image{
+    padding: 80px 0;
+}
+section.salad .image {
+    background-image: url('../images/salad.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100px;
+}
+
+section.maincourse .image {
+    background-image: url('../images/main\ course.avif');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100px;
+}
+
+section.pizza .image {
+    background-image: url('../images/pizza.avif');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100px;
+}
+
+section.dessert .image {
+    background-image: url('../images/dessert.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100px;
+}

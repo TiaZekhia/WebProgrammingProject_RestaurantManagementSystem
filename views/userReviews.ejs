@@ -1,0 +1,27 @@
+<!-- views/userReviews.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/userReviewsStyles.css"> 
+    <title>User Reviews</title>
+</head>
+
+<body>
+    <h1>User Reviews for <%= username %></h1>
+
+    <% if (reviews && reviews.length > 0) { %>
+        <ul>
+            <% reviews.forEach(review => { %>
+                <li><strong><%= review.item_name %></strong>: <%= review.comment %></li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No reviews found for <%= username %>.</p>
+    <% } %>
+</body>
+
+</html>

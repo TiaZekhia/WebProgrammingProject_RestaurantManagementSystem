@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/reviewstyles.css"> 
+    <title>Review Form</title>
+</head>
+
+<body>
+    <form action="/makeReview" method="post">
+        <label for="username">Your Username:</label>
+        <input type="text" id="username" name="username" value="<%= username %>" readonly>
+
+        <label for="item_name">Select Item:</label>
+        <select id="item_name" name="item_name" required>
+            <% itemNames.forEach(item => { %>
+                <option value="<%= item %>"><%= item %></option>
+            <% }); %>
+        </select>
+
+        <label for="comment">Your Comment:</label>
+        <textarea id="comment" name="comment" rows="4" required></textarea>
+
+        <button type="submit">Submit Review</button>
+    </form>
+</body>
+
+</html>

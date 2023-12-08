@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/homestyles.css">
     <title>Restaurant Home Page</title>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var toggleButton = document.querySelector(".toggle-info");
+            var aboutusSection = document.querySelector(".aboutus-section");
+
+            toggleButton.addEventListener("click", function () {
+                aboutusSection.classList.toggle("info-visible");
+                // Change the text of the button
+                toggleButton.textContent = aboutusSection.classList.contains("info-visible") ? "Learn Less" : "Learn More";
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -30,17 +43,41 @@
         <section class="functionality">
             <h2>Make a Review</h2>
             <p>Share your feedback with us. Your opinion matters!</p>
-            <a href="/review">Submit Review</a>
+            <a href="/makeReview?username=<%= encodeURIComponent(username) %>">Submit Review</a>
         </section>
 
-        <section class="functionality">
+        <section class="functionality aboutus-section">
             <h2>About Us</h2>
             <p>
                 We are a passionate team dedicated to providing you with an exceptional dining experience.
                 Our chefs create delicious and diverse dishes, and our goal is to make your visit memorable.
                 Thank you for choosing our restaurant!
             </p>
-            <a href="/aboutus">Learn More</a>
+            <a href="javascript:void(0);" class="toggle-info">Learn More</a>
+            <div class="additional-info">
+                <p>
+                    Welcome to a culinary journey crafted with passion. We are a team driven by a shared
+                    commitment to providing you with an extraordinary dining experience.
+                </p>
+                <p>
+                    Our chefs, the heart and soul of our kitchen, pour their creativity into crafting a menu filled with
+                    delicious and diverse dishes. Each plate is a work of art, meticulously prepared to tantalize your taste
+                    buds and leave a lasting impression.
+                </p>
+                <p>
+                    Our ultimate goal is to make your visit with us truly memorable. From the warm ambiance to the delightful
+                    flavors on your plate, every detail is carefully curated to ensure a dining experience that goes beyond
+                    the ordinary.
+                </p>
+                <p>
+                    We express our sincere gratitude for choosing our restaurant. Your trust in us is the driving
+                    force behind our dedication. We are honored to be a part of your culinary adventures and celebrations.
+                </p>
+                <p>
+                    We don't just serve meals; we create moments. Thank you for joining us on this
+                    flavorful journey. We look forward to welcoming you for another delightful experience.
+                </p>
+            </div>
         </section>
     </main>
 </body>
