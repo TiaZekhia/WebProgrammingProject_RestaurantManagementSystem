@@ -10,6 +10,7 @@ app.set('view engine','ejs');
 const authController = require('./controllers/authController');
 const menuController = require('./controllers/menuController');
 const reviewController = require('./controllers/reviewController');
+const orderController = require('./controllers/orderController');
 
 const viewsPath = path.join(__dirname, 'views');
 app.use(express.static(path.join(__dirname, 'public')));
@@ -37,7 +38,26 @@ app.get('/makeReview', reviewController.showReviewForm);
 
 app.post('/makeReview', reviewController.makeReview);
 
-//app.get('/userReviews', reviewController.userReviews);
+app.get('/userReviews', reviewController.userReviews);
+
+app.delete('/deleteReview/:reviewId', reviewController.deleteReview);
+
+app.get('/editReview', reviewController.showEditReviewForm);
+
+app.post('/updateReview', reviewController.updateReview);
+
+app.get('/order', orderController.order);
+
+app.get('/makeOrder', orderController.showOrderForm);
+app.post('/makeOrder', orderController.makeOrder);
+
+app.get('/userOrders', orderController.userOrders);
+
+app.delete('/deleteOrder/:orderId', orderController.deleteOrder);
+
+app.get('/editOrder', orderController.showEditOrderForm);
+
+app.post('/updateOrder', orderController.updateOrder);
 
 
 app.listen(3000, () => {

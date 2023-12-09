@@ -16,17 +16,28 @@ const userModel = {
       callback
     );
   },
-  
- getUserIdByUsername: (username, callback) => {
+
+  getUserIdByUsername: (username, callback) => {
     connect.connection.query('SELECT uid FROM users WHERE username = ?', [username], (error, results) => {
+      if (error) {
+        callback(error, null);
+      } else {
+        const id = results.length > 0 ? results[0].uid : null;
+        callback(null, id);
+      }
+    });
+  },
+  getUsernameByUserId: (uid, callback) => {
+    connect.connection.query('SELECT username FROM users WHERE uid = ?', [uid], (error, results) => {
         if (error) {
             callback(error, null);
         } else {
-            const id = results.length > 0 ? results[0].uid : null;
-            callback(null, id);
+            const uname = results.length > 0 ? results[0].username : null;
+            callback(null, uname);
         }
     });
-}
+},
+
 };
 
 

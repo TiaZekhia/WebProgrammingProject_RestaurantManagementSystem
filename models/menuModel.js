@@ -1,4 +1,3 @@
-// models/menuModel.js
 const connect = require("../DBconnection");
 
 const menuModel = {
@@ -28,7 +27,6 @@ const menuModel = {
     },
 
     extractItemNames: (results) => {
-        // Check if results is an array before using map
         if (Array.isArray(results)) {
             return results.map(result => result.item_name);
         } else {
@@ -52,8 +50,19 @@ const menuModel = {
                 }
             }
         );
-    }
-    
+    },
+
+    getItemById: async (item_id) => {
+        return new Promise((resolve, reject) => {
+          connect.connection.query('SELECT * FROM menu WHERE item_id = ?', [item_id], (error, results) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(results[0]);
+            }
+          });
+        });
+      },
   
   
 };

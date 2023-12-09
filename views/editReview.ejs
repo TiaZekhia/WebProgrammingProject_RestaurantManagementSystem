@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/editReviewStyles.css">
+    <title>Edit Review</title>
+</head>
+
+<body>
+    <h1>Edit Review</h1>
+
+    <% if (reviewDetails) { %>
+        <form action="/updateReview" method="post">
+            <input type="hidden" name="user_id" value="<%= reviewDetails.user_id %>">
+
+            <label for="review_id">Review id:</label>
+            <input type="text" name="review_id" value="<%= reviewDetails.review_id %>" readonly>
+            <label for="item_id">Select Item:</label>
+            <select id="item_id" name="item_id" required>
+                <% menuItems.forEach(item => { %>
+                    <option value="<%= item.item_id %>" <%= item.item_id === reviewDetails.item_id ? 'selected' : '' %>>
+                        <%= item.item_name %> - $<%= item.item_price %>
+                    </option>
+                <% }); %>
+            </select>
+
+            <label for="comment">Comment:</label>
+            <textarea id="comment" name="comment" rows="4" required><%= reviewDetails.comment %></textarea>
+
+            <button type="submit">Update Review</button>
+        </form>
+    <% } else { %>
+        <p>Review not found.</p>
+    <% } %>
+</body>
+
+</html>

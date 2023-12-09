@@ -1,6 +1,5 @@
 const userModel = require('../models/userModel');
 
-// Controller for handling authentication-related routes
 const authController = {
   checkLogin: (req, res) => {
     const username = req.query.username;

@@ -1,4 +1,5 @@
 const connect = require('../DBconnection');
+const menuModel = require('../models/menuModel');
 
 const reviewModel = {
   saveReview: async (user_id, item_id, comment, callback) => {
@@ -13,67 +14,68 @@ const reviewModel = {
     }
   },
 
-  /*getReviewsByUsername: async (username, callback) => {
-    try {
-      const results = await connect.connection.query(
-        'SELECT item_id, comment FROM review ' +
-        'INNER JOIN users ON review.user_id = users.uid ' +
-        'WHERE users.username = ?',
-        [username]
-      );
-      callback(null, results);
-    } catch (error) {
-      callback(error, null);
-    }
-  }*/
-
-/*getReviewsByUserId: async (user_id) => {
-  return new Promise((resolve, reject) => {
+  getReviewsByUserId: (user_id, callback) => {
     connect.connection.query(
-      'SELECT item_id, comment FROM review ' +
-      'WHERE users.uid = ?',
+      'SELECT * FROM review WHERE user_id = ?',
       [user_id],
-      (error, results) => {
+      async (error, results) => {
         if (error) {
-          reject(error);
+          callback(error, null);
         } else {
-          resolve(results);
+          const reviews = [];
+
+          for (const review of results) {
+            const { review_id, user_id, item_id, comment } = review;
+
+            const item = await menuModel.getItemById(item_id);
+            const item_name = item.item_name;
+            reviews.push({ review_id, user_id, item_id, item_name, comment });
+          }
+
+          callback(null, reviews);
         }
       }
     );
-  });
-},*/
-/*
-getUserReviews: async (username) => {
-  try {
-    // Get user_id based on username
-    const user_id = await connect.connection.promise().query('SELECT uid FROM users WHERE username = ?', [username])
-      .then(([rows]) => {
-        if (rows.length > 0) {
-          return rows[0].uid;
-        } else {
-          return null;
-        }
-      });
-
-    if (user_id !== null) {
-      // Get user reviews
-      const reviews = await connect.connection.promise().query(
-        'SELECT r.item_id, r.comment, m.item_name FROM review r JOIN menu m ON r.item_id = m.item_id WHERE r.user_id = ?',
-        [user_id]
-      ).then(([rows]) => {
-        return rows;
-      });
-
-      return reviews;
-    } else {
-      return null;
+  },
+  deleteReview: async (review_id) => {
+    try {
+      await connect.connection.query('DELETE FROM review WHERE review_id = ?',
+        [review_id]);
+    } catch (error) {
+      console.error('Error:', error);
+      throw error;
     }
-  } catch (error) {
-    throw error;
-  }
-},
-*/
+  },
+  getReviewById: async (review_id, callback) => {
+    connect.connection.query(
+      'SELECT * FROM review WHERE review_id = ?',
+      [review_id],
+      (error, results) => {
+        if (error) {
+          callback(error, null);
+        } else {
+          const reviewDetails = results.length > 0 ? results[0] : null;
+          callback(null, reviewDetails);
+        }
+      }
+    );
+  },
+
+  updateReview: (review_id, updatedItemId, updatedComment, callback) => {
+    connect.connection.query(
+      'UPDATE review SET item_id=?, comment = ? WHERE review_id = ?',
+      [updatedItemId, updatedComment, review_id],
+      (error, results) => {
+        if (error) {
+          callback(error, null);
+        } else {
+          callback(null, results);
+        }
+      }
+    );
+  },
+
+
 };
 
 

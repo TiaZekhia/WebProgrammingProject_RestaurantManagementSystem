@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/homestyles.css">
+    <title>Restaurant Home Page</title>
+    
+</head>
+
+<body>
+    <header>
+        <h1>Hello <%= username %></h1>
+        <h1>Choose an option</h1>
+    </header>
+
+    <main>
+        <section class="functionality">
+            <h2>View Orders</h2>
+            <p>View your orders.</p>
+            <a href="/userOrders?username=<%= encodeURIComponent(username) %>">View Order</a>
+        </section>
+
+        <section class="functionality">
+            <h2>Make Order</h2>
+            <p>Place your order online and enjoy our fast delivery service.</p>
+            <a href="/makeOrder?username=<%= encodeURIComponent(username) %>">Make Order</a>
+        </section>
+    </main>
+</body>
+
+</html>

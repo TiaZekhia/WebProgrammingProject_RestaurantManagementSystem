@@ -1,27 +1,68 @@
-<!-- views/userReviews.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/userReviewsStyles.css"> 
+    <link rel="stylesheet" type="text/css" href="/css/userReviewsStyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>User Reviews</title>
 </head>
 
 <body>
-    <h1>User Reviews for <%= username %></h1>
+    <h1>User Reviews for <%= username %>
+    </h1>
 
-    <% if (reviews && reviews.length > 0) { %>
+    <% if (reviews && reviews.length> 0) { %>
         <ul>
-            <% reviews.forEach(review => { %>
-                <li><strong><%= review.item_name %></strong>: <%= review.comment %></li>
-            <% }); %>
+            <% reviews.forEach(review=> { %>
+                <li id="review-<%= review.review_id %>">
+                    <strong>Review ID:</strong>
+                    <%= review.review_id %><br>
+                        <strong>Item Name:</strong>
+                        <%= review.item_name %><br>
+                            <strong>Comment:</strong>
+                            <%= review.comment %><br>
+
+                                <div class="icons-container">
+                                    <a href="/editReview?review_id=<%= review.review_id %>" title="Edit Review">
+                                        <i class="fa fa-edit edit-icon" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a href="#" onclick="deleteReview(`<%= review.review_id %>`);"
+                                        title="Delete Review">
+                                        <i class="fa fa-trash-o trash-icon" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                </li>
+                <% }); %>
         </ul>
-    <% } else { %>
-        <p>No reviews found for <%= username %>.</p>
-    <% } %>
+        <% } else { %>
+            <p>No reviews found for <%= username %>.</p>
+            <% } %>
+
+                <script>
+                    async function deleteReview(reviewId) {
+                        var confirmDelete = confirm("Are you sure you want to delete this review?");
+                        if (confirmDelete) {
+                            try {
+                                const listItem = document.getElementById(`review-${reviewId}`);
+                                if (listItem) {
+                                    listItem.remove();
+
+                                    const response = await fetch(`/deleteReview/${reviewId}`, { method: 'DELETE' });
+                                    if (!response.ok) {
+                                        throw new Error('Failed to delete review from the database');
+                                    }
+                                    console.log('Review deleted successfully');
+                                }
+                            } catch (error) {
+                                console.error('Error:', error);
+                            }
+                        }
+                    }
+                </script>
+
 </body>
 
 </html>

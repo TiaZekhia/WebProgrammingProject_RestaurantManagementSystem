@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/orderStyles.css">
+</head>
+
+<body>
+    <h1>Edit Order</h1>
+
+    <form action="/updateOrder" method="post">
+        <input type="hidden" name="user_id" value="<%= orderDetails.user_id %>">
+
+        <label for="order_id">Order id:</label>
+        <input type="text" name="order_id" value="<%= orderDetails.order_id %>" readonly>
+
+        <label for="item_id">Select Item:</label>
+        <select id="item_id" name="item_id" required>
+            <% menuItems.forEach(item => { %>
+                <option value="<%= item.item_id %>" <%= item.item_id === orderDetails.item_id ? 'selected' : '' %>>
+                    <%= item.item_name %> - $<%= item.item_price %>
+                </option>
+            <% }); %>
+        </select>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="<%= orderDetails.quantity %>" required>
+
+        <button type="submit">Update Order</button>
+    </form>
+</body>
+
+</html>

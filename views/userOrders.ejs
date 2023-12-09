@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/userOrdersStyles.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>User Orders</title>
+</head>
+
+<body>
+    <header>
+        <h1>User Orders</h1>
+    </header>
+
+    <main>
+        <% if (orders.length > 0) { %>
+            <ul>
+                <% orders.forEach(order => { %>
+                    <li data-order-id="<%= order.order_id %>">
+                        <strong>Order ID:</strong> <%= order.order_id %><br>
+                        <strong>Item Name:</strong> <%= order.item_name %><br>
+                        <strong>Quantity:</strong> <%= order.quantity %><br>
+
+                        <div class="icons-container">
+                            <a href="/editOrder?order_id=<%= order.order_id %>" title="Edit Order">
+                                <i class="fa fa-edit edit-icon" aria-hidden="true"></i>
+                            </a>
+
+                            <a href="#" onclick="deleteOrder(`<%= order.order_id %>`);" title="Delete Order">
+                                <i class="fa fa-trash-o trash-icon" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <p>No orders available.</p>
+        <% } %>
+    </main>
+
+    <script>
+        async function deleteOrder(orderId) {
+            var confirmDelete = confirm("Are you sure you want to delete this order?");
+            if (confirmDelete) {
+                try {
+                    const listItem = document.querySelector(`li[data-order-id="${orderId}"]`);
+                    if (listItem) {
+                        listItem.remove();
+                        const response = await fetch(`/deleteOrder/${orderId}`, { method: 'DELETE' });
+                        if (!response.ok) {
+                            throw new Error('Failed to delete order from the database');
+                        }
+                        console.log('Order deleted successfully');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

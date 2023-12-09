@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/homestyles.css">
     <title>Restaurant Home Page</title>
-    
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var toggleButton = document.querySelector(".toggle-info");
@@ -14,7 +14,6 @@
 
             toggleButton.addEventListener("click", function () {
                 aboutusSection.classList.toggle("info-visible");
-                // Change the text of the button
                 toggleButton.textContent = aboutusSection.classList.contains("info-visible") ? "Learn Less" : "Learn More";
             });
         });
@@ -23,7 +22,8 @@
 
 <body>
     <header>
-        <h1>Hello <%= username %></h1>
+        <h1>Hello <%= username %>
+        </h1>
         <h1>Welcome to Our Restaurant!</h1>
     </header>
 
@@ -35,9 +35,9 @@
         </section>
 
         <section class="functionality">
-            <h2>Make an Order</h2>
-            <p>Place your order online and enjoy our fast delivery service.</p>
-            <a href="/order">Make Order</a>
+            <h2>Order</h2>
+            <p>Place your order online or view it and enjoy our fast delivery service.</p>
+            <a href="/order?username=<%= encodeURIComponent(username) %>">Order</a>
         </section>
 
         <section class="functionality">
@@ -61,17 +61,21 @@
                 </p>
                 <p>
                     Our chefs, the heart and soul of our kitchen, pour their creativity into crafting a menu filled with
-                    delicious and diverse dishes. Each plate is a work of art, meticulously prepared to tantalize your taste
+                    delicious and diverse dishes. Each plate is a work of art, meticulously prepared to tantalize your
+                    taste
                     buds and leave a lasting impression.
                 </p>
                 <p>
-                    Our ultimate goal is to make your visit with us truly memorable. From the warm ambiance to the delightful
-                    flavors on your plate, every detail is carefully curated to ensure a dining experience that goes beyond
+                    Our ultimate goal is to make your visit with us truly memorable. From the warm ambiance to the
+                    delightful
+                    flavors on your plate, every detail is carefully curated to ensure a dining experience that goes
+                    beyond
                     the ordinary.
                 </p>
                 <p>
                     We express our sincere gratitude for choosing our restaurant. Your trust in us is the driving
-                    force behind our dedication. We are honored to be a part of your culinary adventures and celebrations.
+                    force behind our dedication. We are honored to be a part of your culinary adventures and
+                    celebrations.
                 </p>
                 <p>
                     We don't just serve meals; we create moments. Thank you for joining us on this

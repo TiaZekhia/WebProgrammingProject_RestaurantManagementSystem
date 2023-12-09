@@ -1,9 +1,7 @@
-// controllers/menuController.js
 const express = require('express');
 const router = express.Router();
 const menuModel = require('../models/menuModel');
 
-// Route for viewing the menu
 router.get("/", async (req, res) => {
     try {
         const menuItems = await menuModel.getMenuItems();
@@ -14,7 +12,6 @@ router.get("/", async (req, res) => {
     }
 });
 
-// Helper function to group items by category
 function groupItemsByCategory(items) {
     const groupedItems = {};
     items.forEach(item => {
