@@ -16,7 +16,7 @@ const orderModel = {
 
   getUserOrders: (user_id, callback) => {
     connect.connection.query(
-      'SELECT order_id, item_id, quantity FROM orders WHERE user_id = ?',
+      'SELECT order_id, item_id, quantity, total_price FROM orders WHERE user_id = ?',
       [user_id],
       async (error, results) => {
         if (error) {
@@ -25,11 +25,11 @@ const orderModel = {
           const orders = [];
 
           for (const order of results) {
-            const { order_id, item_id, quantity } = order;
+            const { order_id, item_id, quantity, total_price } = order;
             try {
               const item = await menuModel.getItemById(item_id);
               const item_name = item ? item.item_name : null;
-              orders.push({ order_id, item_name, quantity });
+              orders.push({ order_id, item_name, quantity, total_price });
             } catch (fetchError) {
               callback(fetchError, null);
               return;
