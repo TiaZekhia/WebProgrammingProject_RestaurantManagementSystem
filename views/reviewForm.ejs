@@ -9,6 +9,10 @@
 </head>
 
 <body>
+    <div class="header">
+        <h1>Submit a Review</h1>
+        <button onclick="window.location.href='/home?username=<%= encodeURIComponent(username) %>'">Go to Homepage</button>
+    </div>
     <form action="/makeReview" method="post">
         <label for="username">Your Username:</label>
         <input type="text" id="username" name="username" value="<%= username %>" readonly>

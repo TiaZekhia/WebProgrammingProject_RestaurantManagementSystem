@@ -5,13 +5,29 @@ body {
     background-color: #f0f0f0;
 }
 
-h1 {
-    color: #333;
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: #fff;
     padding: 20px;
-    margin: 0;
+    padding-left: 600px;
     border-bottom: 1px solid #ddd;
     text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #333;
+    margin: 0;
+}
+
+button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
 }
 
 section {
@@ -48,7 +64,7 @@ li p {
     margin: 0;
 }
 
-.image{
+.image {
     padding: 80px 0;
 }
 section.salad .image {
@@ -60,7 +76,7 @@ section.salad .image {
 }
 
 section.maincourse .image {
-    background-image: url('../images/main\ course.avif');
+    background-image: url('../images/main-course.avif');
     background-size: cover;
     background-position: center;
     width: 100%;

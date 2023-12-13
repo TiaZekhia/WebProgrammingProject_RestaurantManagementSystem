@@ -6,14 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
     <link rel="stylesheet" type="text/css" href="/css/menustyles.css">
+
 </head>
 
 <body>
-    <h1>Restaurant Menu</h1>
+    <div class="header">
+        <h1>Restaurant Menu</h1>
+        <button onclick="window.location.href='/home?username=<%= encodeURIComponent(username) %>'">Go to Homepage</button>
+    </div>
 
     <% Object.entries(groupedItems).forEach(([category, items]) => { %>
         <section class="<%= category.toLowerCase().replace(' ', '') %>">
-            <div class="image"><h2><%= category %></h2></div>
+            <div class="image">
+                <h2><%= category %></h2>
+            </div>
             <ul>
                 <% items.forEach(item => { %>
                     <li>

@@ -5,20 +5,21 @@
     <link rel="stylesheet" type="text/css" href="/css/orderStyles.css">
 </head>
 
-
 <body>
+    <div class="header">
     <h1>Make an Order</h1>
-
+    <button onclick="window.location.href='/home?username=<%= encodeURIComponent(username) %>'">Go to Homepage</button>
+</div>
     <form action="/makeOrder" method="post">
         <label for="username">Your Username:</label>
         <input type="text" id="username" name="username" value="<%= username %>" readonly>
         <label for="item_id">Select Item:</label>
         <select id="item_id" name="item_id" required>
-            <% menuItems.forEach(item=> { %>
+            <% menuItems.forEach(item => { %>
                 <option value="<%= item.item_id %>">
                     <%= item.item_name %> - $<%= item.item_price %>
                 </option>
-                <% }); %>
+            <% }); %>
         </select>
 
         <label for="quantity">Quantity:</label>
@@ -26,6 +27,8 @@
 
         <button type="submit">Place Order</button>
     </form>
+
+
 </body>
 
 </html>

@@ -4,9 +4,10 @@ const menuModel = require('../models/menuModel');
 
 router.get("/", async (req, res) => {
     try {
+        const username=req.query.username;
         const menuItems = await menuModel.getMenuItems();
         const groupedItems = groupItemsByCategory(menuItems);
-        res.render('viewMenu', { groupedItems });
+        res.render('viewMenu', {username, groupedItems });
     } catch (error) {
         res.status(500).send("<h1>Internal Server Error</h1>");
     }

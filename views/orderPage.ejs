@@ -4,19 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/homestyles.css">
+    <link rel="stylesheet" type="text/css" href="/css/orders.css">
     <title>Restaurant Home Page</title>
     
 </head>
 
 <body>
     <header>
-        <h1>Hello <%= username %></h1>
         <h1>Choose an option</h1>
+        <button onclick="window.location.href='/home?username=<%= encodeURIComponent(username) %>'">Go to Homepage</button>
     </header>
-
     <main>
-        <section class="functionality">
+            <section class="functionality">
             <h2>View Orders</h2>
             <p>View your orders.</p>
             <a href="/userOrders?username=<%= encodeURIComponent(username) %>">View Order</a>

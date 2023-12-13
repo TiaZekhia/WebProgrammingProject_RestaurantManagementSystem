@@ -1,0 +1,97 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/restaurant_bg.jpg');
+    background-size: into;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+header {
+    background-color: rgba(51, 51, 51, 0.8);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    padding-left: 600px;
+    padding-right: 50px;
+    display: flex;
+    justify-content: space-between; /* Align button to the left */
+    align-items: center; /* Center content vertically */
+}
+
+header button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #666;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+header button:hover {
+    background-color: #555;
+}
+
+main {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    padding-bottom: 50px; /* Adjust this value as needed */
+}
+
+.functionality {
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.functionality h2 {
+    color: #333;
+}
+
+.functionality p {
+    color: #666;
+}
+
+.functionality a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.functionality a:hover {
+    background-color: #555;
+}
+
+.aboutus-section {
+    width: 1100px;
+}
+
+.additional-info {
+    display: none;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+.info-visible .additional-info {
+    display: block;
+    opacity: 1;
+    max-height: 500px;
+}
