@@ -43,7 +43,6 @@ const makeReview = async (req, res) => {
                 console.error('Error saving review:', saveError);
                 res.status(500).send('Internal Server Error');
               } else {
-                console.log('Review saved successfully:', saveResult);
                 res.redirect('/userReviews?username=' + encodeURIComponent(username));
               }
             });
@@ -108,7 +107,6 @@ const userReviews = async (req, res) => {
               console.error('Error getting reviews:', reviewsError);
               res.status(500).send('Internal Server Error2');
             } else {
-              console.log(reviews)
               res.render('userReviews', { username, reviews });
             }
           });

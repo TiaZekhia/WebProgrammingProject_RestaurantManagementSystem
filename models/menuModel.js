@@ -30,7 +30,6 @@ const menuModel = {
         if (Array.isArray(results)) {
             return results.map(result => result.item_name);
         } else {
-            console.log('Results is not an array:', results);
             return [];
         }
     },
