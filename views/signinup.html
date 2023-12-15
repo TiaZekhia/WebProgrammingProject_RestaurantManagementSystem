@@ -66,6 +66,25 @@
         document.querySelector('.img__btn').addEventListener('click', function () {
             document.querySelector('.cont').classList.toggle('s--signup');
         });
+
+        function validatePassword() {
+            var password = document.getElementById('password').value;
+
+           
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+                return false;
+            }
+
+
+            return true;
+        }
+
+        document.getElementById('signup').addEventListener('click', function (event) {
+            if (!validatePassword()) {
+                event.preventDefault(); 
+            }
+        });
     </script>
 
 </body>
